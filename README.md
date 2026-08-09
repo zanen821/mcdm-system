@@ -23,7 +23,7 @@
     - **第一列(index）**：填入 'type'，用來標註每個準則是望大還是望小
       - Benefit（望大）
       - Cost（望小）
-    - **第一欄**：方案名稱（Alternative），例如 A1、A2、A3...
+    - **第一欄**：備選方案名稱（Alternative），例如 A1、A2、A3...
 
 2. 將 Excel 放入 'data/' 資料夾。
 

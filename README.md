@@ -35,6 +35,28 @@
 
 
 ## 待完成
+- [ ] 新增 AHP 權重法
+- [ ] 新增 ANP 權重法
 - [ ] 新增 CRITIC 權重法
+- [ ] 新增 ITARA 權重法
+- [ ] 新增 ITARA 權重法
+- [ ] 新增 SECA 權重法
+- [ ] 新增 FullEX 權重法
+- [ ] 新增 DEMATEL 權重法
+- [ ] 新增 HISA 權重法
+- [ ] 新增 SAW 績效評估法
+- [ ] 新增 WASPAS 績效評估法
+- [ ] 新增 TOPSIS 績效評估法
+- [ ] 新增 VIKOR 績效評估法
+- [ ] 新增 EDAS 績效評估法
+- [ ] 新增 ALWAS 績效評估法
 - [ ] 新增 PROMETHEE II 績效評估法
+- [ ] 新增 TODIM 績效評估法
+- [ ] 新增 MABAC 績效評估法
+- [ ] 新增 AROMAN 績效評估法
+- [ ] 新增 RIM 績效評估法
+- [ ] 新增 GRA 績效評估法
+- [ ] 新增 CoCoSo 績效評估法
+- [ ] 新增 MAREC 績效評估法
+- [ ] 新增 DANP 績效評估法
 - [ ] 建立 `compare.py`，支援多方法組合比較

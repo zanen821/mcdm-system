@@ -1,7 +1,6 @@
 import numpy as np
 import pandas as pd
 
-
 def _invert_cost_criteria(matrix: np.ndarray, criteria_types: list[str]) -> np.ndarray:
     """把成本型(cost)準則轉望大,統一望大特性"""
     transformed = matrix.astype(float).copy()
@@ -41,7 +40,7 @@ def calculate_weights(
     輸入:
         matrix: 決策矩陣,列=方案(alternatives),欄=準則(criteria)
         criteria_types: 每個準則是 'benefit'(望大)或 'cost'(望小)
-        aspire_array: 每個準則的渴望水準(AL),可選。
+        *aspire_array: 每個準則的渴望水準(AL),可選填
                       不指定時，預設用每個準則轉換後的最大值代替。
     輸出:
         weights: 每個準則的權重陣列，總和為 1

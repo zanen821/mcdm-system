@@ -9,18 +9,13 @@ print(weights)
 result = rank(matrix, weights, criteria_types)
 print(result)
 '''
-# main.py
-from mcdm.loader import load_decision_matrix
-from mcdm.weighting import entropy, critic
 
-matrix, criteria_types = load_decision_matrix('data/SECA.xlsx')
 
-# 測試不指定 AL
-from mcdm.weighting import seca
-from mcdm.ranking import weighted_sum
-
-weights = seca.calculate_weights(matrix, criteria_types, beta=2)
-print("SECA 權重：", weights)
-
-result = weighted_sum.rank(matrix, weights, criteria_types)
-print(result)
+'''
+#AHP CR<0.1可接受
+from mcdm.loader import load_pairwise_matrix
+from mcdm.weighting.AHP import calculate_weights
+matrix= load_pairwise_matrix('data/AHP.xlsx')
+weights,cr = calculate_weights(matrix)
+print("AHP 權重：", weights,"CR:",cr)
+'''

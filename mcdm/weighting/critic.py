@@ -31,11 +31,8 @@ def _correlation_weights(matrix: np.ndarray, std_array: np.ndarray) -> np.ndarra
     weights = phi / phi.sum()
     return weights
 
-def calculate_weights(
-    matrix: pd.DataFrame,
-    criteria_types: list[str],
-    aspire_array: np.ndarray | None = None,
-) -> np.ndarray:
+def calculate_weights(matrix: pd.DataFrame,criteria_types: list[str],
+    aspire_array: np.ndarray | None = None,) -> np.ndarray:
     """
     輸入:
         matrix: 決策矩陣,列=方案(alternatives),欄=準則(criteria)

@@ -6,7 +6,7 @@
 多準則決策的比較系統，放入 Excel 可以直接算出績效，並支援不同權重法與績效評估法自由組合比較。
 
 ## 目前支援方法
-- **Weight**：Entropy
+- **Weight**：AHP,Entropy
 - **Performance**：Marcos
 
 ## 使用指南
@@ -35,7 +35,6 @@
 
 
 ## 待完成
-- [ ] 新增 AHP 權重法
 - [ ] 新增 ANP 權重法
 - [ ] 新增 CRITIC 權重法
 - [ ] 新增 ITARA 權重法

@@ -35,6 +35,9 @@
 
 
 ## 待完成
+- [ ] 新增 Fuzzy DEMATEL 權重法
+- [ ] 新增 Gray DEMATEL 權重法
+- [ ] 新增 Z DEMATEL 權重法
 - [ ] 新增 ANP 權重法
 - [ ] 新增 CRITIC 權重法
 - [ ] 新增 ITARA 權重法

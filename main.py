@@ -1,4 +1,4 @@
-from mcdm.loader import load_pairwise_matrix, load_decision_matrix
+from mcdm.loader import load_pairwise_matrix, load_decision_matrix,load_bwm_data
 from mcdm.weighting.ahp import calculate_weights
 from mcdm.weighting.dematel import calculate_weights
 '''
@@ -22,7 +22,15 @@ print("AHP 權重：", weights,"CR:",cr)
 
 '''
 #DEMATEL 
-matrix= load_pairwise_matrix('data/DEMATEL.xlsx')
+matrix= load_pairwise_matrix('data/DEMATEL_t.xlsx')
 print(calculate_weights(matrix))
 '''
+
+
+data = load_bwm_data('data/BWM_15.xlsx')
+
+print("Best indices:", data['best_idx'])
+print("Worst indices:", data['worst_idx'])
+print(data['BO'])
+print(data['OW'])
 

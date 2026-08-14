@@ -1,3 +1,6 @@
+from mcdm.loader import load_pairwise_matrix, load_decision_matrix
+from mcdm.weighting.ahp import calculate_weights
+from mcdm.weighting.dematel import calculate_weights
 '''
 from mcdm.loader import load_decision_matrix
 from mcdm.weighting.entropy import calculate_weights
@@ -10,12 +13,16 @@ result = rank(matrix, weights, criteria_types)
 print(result)
 '''
 
-
 '''
 #AHP CR<0.1可接受
-from mcdm.loader import load_pairwise_matrix
-from mcdm.weighting.AHP import calculate_weights
 matrix= load_pairwise_matrix('data/AHP.xlsx')
 weights,cr = calculate_weights(matrix)
 print("AHP 權重：", weights,"CR:",cr)
 '''
+
+'''
+#DEMATEL 
+matrix= load_pairwise_matrix('data/DEMATEL.xlsx')
+print(calculate_weights(matrix))
+'''
+

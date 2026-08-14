@@ -1,11 +1,11 @@
 import numpy as np
 import pandas as pd
+from mcdm.aggregation import geometric_mean
 
 _RANDOM_INDEX = {
     1: 0.00, 2: 0.00, 3: 0.58, 4: 0.90, 5: 1.12,
     6: 1.24, 7: 1.32, 8: 1.41, 9: 1.45, 10: 1.49,
 }
-
 
 def _geometric_mean(matrix: np.ndarray) -> np.ndarray:
     """計算準則的幾何平均數"""
@@ -19,7 +19,7 @@ def _geometric_mean(matrix: np.ndarray) -> np.ndarray:
                 continue
     arr = np.zeros(matrix.shape[0], dtype=float)
     for i in range(matrix.shape[0]):
-        arr[i]=(np.prod(matrix[i,:]))**(1/matrix.shape[0])
+        arr[i]=(np.prod(matrix[i, :]))**(1/matrix.shape[0])
     return arr
 
 
@@ -41,17 +41,23 @@ def _consistency_ratio(matrix: np.ndarray, weights: np.ndarray) -> float:
 
     return cr
 
-def calculate_weights(matrix: pd.DataFrame) -> tuple[np.ndarray, float]:
+
+def calculate_weights(matrix) -> tuple[np.ndarray, float]:
     """
     輸入:
-        matrix: 決策矩陣,列、欄=準則(criteria)
+        matrix: 準則兩兩比較矩陣。可以是：
+                - 單一 DataFrame(單一專家)
+                - dict[str, DataFrame](多位專家，key 為專家名稱，用幾何平均整合)
     輸出:
         weights: 每個準則的權重陣列，總和為 1
         cr: 一致性比率(CR)，< 0.1 代表比較矩陣一致性可接受
     """
+    if isinstance(matrix, dict):
+        matrix = geometric_mean(matrix)
+
     data_array = matrix.to_numpy(dtype=float)
-    filled_matrix = data_array.copy()   # 保留原始輸入，避免被 _geometric_mean 內部修改
+    filled_matrix = data_array.copy()
     geometric_means = _geometric_mean(filled_matrix)
     weights = _normalize(geometric_means)
     cr = _consistency_ratio(filled_matrix, weights)
-    return weights,cr
+    return weights, cr

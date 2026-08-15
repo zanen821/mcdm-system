@@ -27,7 +27,7 @@ print(calculate_weights(matrix))
 
 #BWM
 best_idx, worst_idx, BO, OW = load_bwm_data('data/temp.xlsx')
-weights_all, xi_all, average_weights,z= bwm.calculate_weights(best_idx, worst_idx, BO, OW)
+weights_all, xi_all, average_weights,z_all= bwm.calculate_weights(best_idx, worst_idx, BO, OW)
 
 for i in range(len(xi_all)):
     print(f"expert{i+1} 權重：{weights_all[i]} ξ：{xi_all[i]:.4f}" f" z:{z:.4f}")

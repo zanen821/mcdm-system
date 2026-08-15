@@ -105,6 +105,7 @@ def calculate_weights(best_idx: np.ndarray,worst_idx: np.ndarray,BO: np.ndarray,
 
     weights_all = np.zeros((n_experts, n_crit))
     xi_all = np.zeros(n_experts)
+    z_all = np.zeros(n_experts)
 
     for i in range(n_experts):
         a_Bj = BO[i]
@@ -115,7 +116,8 @@ def calculate_weights(best_idx: np.ndarray,worst_idx: np.ndarray,BO: np.ndarray,
         w_opt, xi_opt,z = _solve_single_expert(a_Bj, a_jW, b_idx, w_idx)
         weights_all[i] = w_opt
         xi_all[i] = xi_opt
+        z_all[i] = z
 
     average_weights = weights_all.mean(axis=0)
 
-    return weights_all, xi_all, average_weights,z
+    return weights_all, xi_all, average_weights,z_all

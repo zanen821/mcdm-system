@@ -25,25 +25,20 @@ def load_pairwise_matrix(filepath: str) -> dict[str, pd.DataFrame]:
 
 
 
-def load_bwm_data(filepath: str) -> dict:
+def load_bwm_data(filepath: str) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     """
     讀取 BWM 多專家資料，彙整成整體陣列。
     Excel 格式需求：
         - 工作表 "BO"：每一「列」代表一位專家。
-                        第一欄(index)為該專家選的 Best 準則名稱(C1, C2...)，
-                        其餘欄位(標題為 C1, C2...)為該專家的 Best-to-Others 向量。
         - 工作表 "OW"：每一「欄」代表一位專家。
-                        第一列為該專家選的 Worst 準則名稱(C1, C2...)，
-                        其餘列為 Others-to-Worst 值，第一欄為準則名稱(C1, C2...)。
         - BO 的專家人數(列數)須與 OW 的專家人數(欄數)一致，
         - 準則名稱需符合 "C" + 數字 的格式(例如 C1, C2, C3...)。
     輸出:
-        {
-            'best_idx': np.ndarray，每位專家 Best 準則的編號(C1→1, C2→2...)，
-            'worst_idx': np.ndarray，每位專家 Worst 準則的編號，
-            'BO': np.ndarray，形狀(專家數, 準則數)，純數值，每列一位專家的 Best-to-Others 向量，
-            'OW': np.ndarray，形狀(準則數, 專家數)，純數值，每欄一位專家的 Others-to-Worst 向量，
-        }
+        (best_idx, worst_idx, BO, OW)
+            best_idx: np.ndarray，每位專家 Best 準則的編號(C1→1, C2→2...)，形狀 [專家數]
+            worst_idx: np.ndarray，每位專家 Worst 準則的編號，形狀 [專家數]
+            BO: np.ndarray，形狀(專家數, 準則數)，純數值，每列一位專家的 Best-to-Others 向量
+            OW: np.ndarray，形狀(準則數, 專家數)，純數值，每欄一位專家的 Others-to-Worst 向量
     """
     bo_df = pd.read_excel(filepath, sheet_name='BO', header=0, index_col=0)
 
@@ -66,9 +61,4 @@ def load_bwm_data(filepath: str) -> dict:
     BO = bo_df.to_numpy(dtype=float)
     OW = ow_values
 
-    return {
-        'best_idx': best_idx,
-        'worst_idx': worst_idx,
-        'BO': BO,
-        'OW': OW,
-    }
+    return best_idx,worst_idx,BO,OW

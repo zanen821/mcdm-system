@@ -26,7 +26,7 @@ print(calculate_weights(matrix))
 '''
 
 #BWM
-best_idx, worst_idx, BO, OW = load_bwm_data('data/BWM_15.xlsx')
+best_idx, worst_idx, BO, OW = load_bwm_data('data/temp.xlsx')
 weights_all, xi_all, average_weights,z= bwm.calculate_weights(best_idx, worst_idx, BO, OW)
 
 for i in range(len(xi_all)):

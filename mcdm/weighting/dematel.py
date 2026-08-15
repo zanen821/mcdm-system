@@ -50,4 +50,4 @@ def calculate_weights(matrix) -> tuple[np.ndarray, float]:
     total_influence_matrix = _total_influence(normalize)
     weights,total_impact,net_impact= weights_impact(total_influence_matrix)
     print(weights,total_impact,net_impact)
-    #return weights
+    #return weights,total_impact,net_impact

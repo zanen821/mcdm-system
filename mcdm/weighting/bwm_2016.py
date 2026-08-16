@@ -1,7 +1,6 @@
 import numpy as np
 from scipy.optimize import linprog
 
-
 def _build_linear_constraints(a_Bj: np.ndarray, a_jW: np.ndarray, best_idx: int, worst_idx: int, n_crit: int
 ) -> tuple[np.ndarray, np.ndarray]:
     """
@@ -134,4 +133,4 @@ def calculate_weights(
 
     average_weights = weights_all.mean(axis=0)
 
-    return weights_all, xi_all, z_all, average_weights
+    return weights_all, xi_all,average_weights, z_all

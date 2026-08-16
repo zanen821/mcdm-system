@@ -65,7 +65,7 @@ def _build_constraints(
 def _solve_single_expert(
     a_Bj: np.ndarray, a_jW: np.ndarray, best_idx: int, worst_idx: int
 ) -> tuple[np.ndarray, float]:
-    """針對單一專家求解 BWM 非線性模型。"""
+    """求解 BWM 非線性模型。"""
     n_crit = len(a_Bj)
 
     def objective(x):

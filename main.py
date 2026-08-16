@@ -1,5 +1,6 @@
 from mcdm.loader import load_pairwise_matrix, load_decision_matrix,load_bwm_data
-from mcdm.weighting import ahp,dematel,entropy,bwm
+from mcdm.weighting import ahp,dematel,entropy
+from mcdm.weighting import 2015_bwm,2016_bwm
 '''
 from mcdm.loader import load_decision_matrix
 from mcdm.weighting.entropy import calculate_weights
@@ -25,9 +26,17 @@ matrix= load_pairwise_matrix('data/DEMATEL_t.xlsx')
 print(calculate_weights(matrix))
 '''
 
-#BWM
+#2015BWM
 best_idx, worst_idx, BO, OW = load_bwm_data('data/temp.xlsx')
-weights_all, xi_all, average_weights,z_all= bwm.calculate_weights(best_idx, worst_idx, BO, OW)
+weights_all, xi_all, average_weights,z_all= 2015_bwm.calculate_weights(best_idx, worst_idx, BO, OW)
+
+for i in range(len(xi_all)):
+    print(f"expert{i+1} 權重：{weights_all[i]} ξ：{xi_all[i]:.4f}" f" z:{z_all[i]:.4f}")
+print(f"average weights：{average_weights}")
+
+#2016BWM
+best_idx, worst_idx, BO, OW = load_bwm_data('data/temp.xlsx')
+weights_all, xi_all, average_weights,z_all= 2016_bwm.calculate_weights(best_idx, worst_idx, BO, OW)
 
 for i in range(len(xi_all)):
     print(f"expert{i+1} 權重：{weights_all[i]} ξ：{xi_all[i]:.4f}" f" z:{z_all[i]:.4f}")

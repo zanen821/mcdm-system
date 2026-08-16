@@ -1,6 +1,5 @@
 from mcdm.loader import load_pairwise_matrix, load_decision_matrix,load_bwm_data
-from mcdm.weighting import ahp,dematel,entropy
-from mcdm.weighting import 2015_bwm,2016_bwm
+from mcdm.weighting import ahp,dematel,entropy,2015bwm,2016bwm
 '''
 from mcdm.loader import load_decision_matrix
 from mcdm.weighting.entropy import calculate_weights

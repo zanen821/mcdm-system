@@ -7,13 +7,16 @@ def _normalize(matrix: np.ndarray) -> np.ndarray:
     正規化：取「列總和」與「欄總和」中的最大值，
     用這個最大值去除整個矩陣。
     """
+    matrix = matrix.copy()
+    np.fill_diagonal(matrix, 0)
+
     row_sums = matrix.sum(axis=1)   
     col_sums = matrix.sum(axis=0)   
 
     normalized = matrix / max(row_sums.max(), col_sums.max())
     return normalized
 
-def _total_influence(matrix: np.ndarray) -> np.ndarray:
+def _total_impact(matrix: np.ndarray) -> np.ndarray:
     """
     計算總影響力矩陣 T = D * (I - D)^(-1)
     """
@@ -47,7 +50,6 @@ def calculate_weights(matrix) -> tuple[np.ndarray, float]:
 
     data_array = matrix.to_numpy(dtype=float)
     normalize = _normalize(data_array)
-    total_influence_matrix = _total_influence(normalize)
+    total_influence_matrix = _total_impact(normalize)
     weights,total_impact,net_impact= weights_impact(total_influence_matrix)
-    print(weights,total_impact,net_impact)
-    #return weights,total_impact,net_impact
+    return weights,total_impact,net_impact

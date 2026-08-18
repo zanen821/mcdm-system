@@ -1,11 +1,19 @@
 from mcdm.loader import load_pairwise_matrix, load_decision_matrix,load_bwm_data
 from mcdm.weighting import ahp,dematel,entropy,bwm_2015,bwm_2016,fuzzy_bwm
 from mcdm.loader import load_decision_matrix
-from mcdm.weighting.entropy import calculate_weights
+#from mcdm.weighting.entropy import calculate_weights
 from mcdm.ranking.marcos import rank
 
+#DEMATEL 
+from mcdm.weighting.dematel import calculate_weights
+matrix= load_pairwise_matrix('data/temp.xlsx')
+weights,total_impact,net_impact=calculate_weights(matrix)
+print("權重：",weights)
+print("總影響力：",total_impact)
+print("淨影響力：",net_impact)
+
 '''
-不可用！！！
+不可用！！！因為區域求解、全域求解可能造成不同結果
 #fuzzy BWM
 best_idx, worst_idx, BO, OW = load_bwm_data('data/temp.xlsx')
 
@@ -31,12 +39,6 @@ print(result)
 matrix= load_pairwise_matrix('data/AHP.xlsx')
 weights,cr = calculate_weights(matrix)
 print("AHP 權重：", weights,"CR:",cr)
-'''
-
-'''
-#DEMATEL 
-matrix= load_pairwise_matrix('data/DEMATEL_t.xlsx')
-print(calculate_weights(matrix))
 '''
 
 '''

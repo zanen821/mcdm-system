@@ -4,6 +4,19 @@ from mcdm.loader import load_decision_matrix
 #from mcdm.weighting.entropy import calculate_weights
 from mcdm.ranking.marcos import rank
 
+
+#ITARA
+def itara():
+    from mcdm.loader import load_itara_data
+    from mcdm.weighting.itara import calculate_weights
+    matrix,it_values = load_itara_data('data/itara_data.xlsx')
+    weights = calculate_weights(matrix, it_values)
+    print("ITARA 權重：", weights)
+
+itara()
+
+
+'''
 #DEMATEL 
 from mcdm.weighting.dematel import calculate_weights
 matrix= load_pairwise_matrix('data/temp.xlsx')
@@ -11,6 +24,7 @@ weights,total_impact,net_impact=calculate_weights(matrix)
 print("權重：",weights)
 print("總影響力：",total_impact)
 print("淨影響力：",net_impact)
+'''
 
 '''
 不可用！！！因為區域求解、全域求解可能造成不同結果

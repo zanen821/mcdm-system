@@ -62,3 +62,20 @@ def load_bwm_data(filepath: str) -> tuple[np.ndarray, np.ndarray, np.ndarray, np
     OW = ow_values
 
     return best_idx,worst_idx,BO,OW
+
+def load_itara_data(filepath: str) -> tuple[pd.DataFrame, np.ndarray]:
+    """
+    讀取ITARA資料
+    Excel 格式需求：
+        - 第一列(index='IT')：各準則的無差異閾值(Indifference Threshold)
+
+    輸出:
+        matrix: 決策矩陣(不含 IT 列)
+        it_values: 每個準則的無差異閾值，長度 = 準則數
+    """
+    raw = pd.read_excel(filepath, header=0, index_col=0)
+
+    it_values = raw.loc['IT'].to_numpy(dtype=float)
+    matrix = raw.drop('IT')
+
+    return matrix, it_values

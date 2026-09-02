@@ -5,6 +5,18 @@ from mcdm.loader import load_decision_matrix
 from mcdm.ranking.marcos import rank
 
 
+#modified ITARA i
+def modified_itara_i():
+    from mcdm.loader import load_modified_itara_data
+    from mcdm.weighting.modified_itara_i import calculate_weights
+    matrix,it_values,aspire_values = load_modified_itara_data('data/modified_itara_i.xlsx')
+    weights = calculate_weights(matrix, it_values, aspire_values)
+    print("modified ITARA i 權重：", weights)
+
+modified_itara_i()
+
+
+'''
 #ITARA
 def itara():
     from mcdm.loader import load_itara_data
@@ -14,7 +26,7 @@ def itara():
     print("ITARA 權重：", weights)
 
 itara()
-
+'''
 
 '''
 #DEMATEL 

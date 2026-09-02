@@ -79,3 +79,26 @@ def load_itara_data(filepath: str) -> tuple[pd.DataFrame, np.ndarray]:
     matrix = raw.drop('IT')
 
     return matrix, it_values
+
+def load_modified_itara_data(filepath: str) -> tuple[pd.DataFrame, np.ndarray, np.ndarray]:
+    """
+    讀取 Modified ITARA I 專用資料。
+    Excel 格式需求：
+        - 一列(index='IT')：各準則的無差異閾值(Indifference Threshold)
+        - 一列(index='Aspire Level')：各準則的渴望水準
+        - 其餘列：方案在各準則的數值
+        - 所有準則預設為望大(benefit)，不需填寫 type 列
+
+    輸出:
+        matrix: 決策矩陣(不含 IT、Aspire Level 列)
+        it_values: 每個準則的無差異閾值，長度 = 準則數
+        aspire_values: 每個準則的渴望水準，長度 = 準則數
+    """
+    raw = pd.read_excel(filepath, header=0, index_col=0)
+
+    it_values = raw.loc['IT'].to_numpy(dtype=float)
+    aspire_values = raw.loc['Aspire Level'].to_numpy(dtype=float)
+
+    matrix = raw.drop(['IT', 'Aspire Level'])
+
+    return matrix, it_values, aspire_values

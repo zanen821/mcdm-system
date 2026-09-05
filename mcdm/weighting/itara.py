@@ -20,7 +20,7 @@ def _weights(dispersion: np.ndarray,p: float) -> np.ndarray:
     dispersion_sum=np.power(dispersion_sum,1/p)
     return dispersion_sum / np.sum(dispersion_sum)
 
-def calculate_weights(matrix: pd.DataFrame,it: pd.DataFrame|None = None,) -> np.ndarray:
+def calculate_weights(matrix: pd.DataFrame,it: np.ndarray|None = None,) -> np.ndarray:
     """
     輸入:
         matrix: 決策矩陣,列=方案(alternatives),欄=準則(criteria)

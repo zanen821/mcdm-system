@@ -100,11 +100,10 @@ def load_itara_data(filepath: str) -> tuple[pd.DataFrame, np.ndarray]:
 
     return matrix, it_values
 
-def load_modified_itara_data(filepath: str) -> tuple[pd.DataFrame, np.ndarray, np.ndarray, np.ndarray]:
+def load_modified_itara_data(filepath: str) -> tuple[pd.DataFrame, np.ndarray, np.ndarray]:
     """
     Modified ITARA I專用
     Excel 格式需求：
-        -type：每個準則望大望小，可填 0/1 或直接填 'benefit'/'cost'
         -IT：無差異閾值(Indifference Threshold)
         -Aspire Level：各準則的渴望水準
         -Data matrix
@@ -113,14 +112,12 @@ def load_modified_itara_data(filepath: str) -> tuple[pd.DataFrame, np.ndarray, n
         matrix
         it_values: 無差異閾值
         aspire_values:渴望水準
-        criteria_types
     """
     raw = pd.read_excel(filepath, header=0, index_col=0)
 
     it_values = raw.loc['IT'].to_numpy(dtype=float)
     aspire_values = raw.loc['Aspire Level'].to_numpy(dtype=float)
-    criteria_types = _transform_type_row(raw.loc['type']).to_numpy(dtype=str)
 
-    matrix = raw.drop(['IT', 'Aspire Level', 'type'])
+    matrix = raw.drop(['IT', 'Aspire Level'])
 
-    return matrix, it_values, aspire_values, criteria_types
+    return matrix, it_values, aspire_values

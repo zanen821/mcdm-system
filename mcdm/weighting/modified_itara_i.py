@@ -71,11 +71,11 @@ def calculate_weights(
     使用 Modified ITARA 方法計算準則權重。
 
     輸入:
-        matrix: 決策矩陣，列=方案(alternatives)，欄=準則(criteria)
-        it_values: 每個準則的無差異閾值(Indifference Threshold)
-        aspire_values: 每個準則的渴望水準(Aspire Level)
-        p: 差異度計算的冪次，預設 2
-        alpha: vj 與 cv 的加權比例，預設 0.5(各佔一半)
+        -matrix
+        -it_values: 無差異閾值(Indifference Threshold)
+        -aspire_values
+        -p: 差異度計算的冪次，預設 2
+        -alpha: vj 與 cv 的加權比例，預設 0.5(各佔一半)
 
     輸出:
         weights: 每個準則的權重陣列，總和為 1

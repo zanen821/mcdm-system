@@ -100,7 +100,7 @@ def load_itara_data(filepath: str) -> tuple[pd.DataFrame, np.ndarray]:
 
     return matrix, it_values
 
-def load_modified_itara_data(filepath: str) -> tuple[pd.DataFrame, np.ndarray, np.ndarray]:
+def load_modified_itara_i_data(filepath: str) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     """
     Modified ITARA I專用
     Excel 格式需求：
@@ -120,4 +120,29 @@ def load_modified_itara_data(filepath: str) -> tuple[pd.DataFrame, np.ndarray, n
 
     matrix = raw.drop(['IT', 'Aspire Level'])
 
-    return matrix, it_values, aspire_values
+    return matrix.to_numpy(dtype=float), it_values, aspire_values
+
+def load_modified_itara_ii_data(filepath: str) -> tuple[np.ndarray,np.ndarray,np.ndarray,np.ndarray,np.ndarray]:
+    """
+    Modified ITARA II專用
+    Excel 格式需求：
+        -criteria types：
+        -IT：無差異閾值(Indifference Threshold)
+        -Aspire Level：各準則的渴望水準
+        -Data matrix
+
+    輸出:
+        -matrix
+        -it_values: 無差異閾值
+        -aspire_values:渴望水準
+        -worst_values:各準則的最差水準
+    """
+    raw = pd.read_excel(filepath, header=0, index_col=0)
+
+    it_values = raw.loc['IT'].to_numpy(dtype=float)
+    aspire_values = raw.loc['Aspire Level'].to_numpy(dtype=float)
+    worst_values = raw.loc['Worst Level'].to_numpy(dtype=float)
+    
+    matrix = raw.drop(['IT', 'Aspire Level','Worst Level'])
+
+    return matrix.to_numpy(dtype=float),it_values, aspire_values,worst_values

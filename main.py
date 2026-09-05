@@ -4,16 +4,29 @@ from mcdm.loader import load_decision_matrix
 #from mcdm.weighting.entropy import calculate_weights
 from mcdm.ranking.marcos import rank
 
+#待修改
+#modified ITARA ii
+def modified_itara_ii():
+    from mcdm.loader import load_modified_itara_ii_data
+    from mcdm.weighting.modified_itara_ii import calculate_weights
+    matrix,it_values,aspire_values,worst_values= load_modified_itara_ii_data('data/modified_itara_ii.xlsx')
+    weights =calculate_weights(matrix,it_values, aspire_values,worst_values)
+    print("modified ITARA ii 權重：", weights)
 
+modified_itara_ii()
+
+
+'''
 #modified ITARA i
 def modified_itara_i():
-    from mcdm.loader import load_modified_itara_data
+    from mcdm.loader import load_modified_itara_i_data
     from mcdm.weighting.modified_itara_i import calculate_weights
-    matrix,it_values,aspire_values = load_modified_itara_data('data/modified_itara_i.xlsx')
+    matrix,it_values,aspire_values= load_modified_itara_i_data('data/modified_itara_i.xlsx')
     weights = calculate_weights(matrix, it_values, aspire_values)
     print("modified ITARA i 權重：", weights)
 
 modified_itara_i()
+'''
 
 
 '''

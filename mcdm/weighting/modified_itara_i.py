@@ -1,7 +1,6 @@
 import numpy as np
 import pandas as pd
 
-
 def _normalize(matrix: np.ndarray, aspire: np.ndarray, it: np.ndarray
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     """
@@ -43,8 +42,8 @@ def _delta_and_vj(gamma_matrix: np.ndarray, nit_array: np.ndarray, p: float) -> 
     n_rows, n_cols = gamma_matrix.shape
     for row in range(n_rows):
         for col in range(n_cols):
-            if gamma_matrix[row][col] > nit_array[col]:
-                delta_matrix[row][col] = gamma_matrix[row][col] - nit_array[col]
+            if gamma_matrix[row,col] > nit_array[col]:
+                delta_matrix[row,col] = gamma_matrix[row,col] - nit_array[col]
 
     delta_matrix = delta_matrix ** p
     vj_array = (delta_matrix.sum(axis=0)) ** (1 / p)
@@ -58,7 +57,6 @@ def _combine_weights(vj_array: np.ndarray, cv_array: np.ndarray, alpha: float) -
         + (1 - alpha) * (cv_array / cv_array.sum())
     )
     return weights
-
 
 def calculate_weights(
     matrix: pd.DataFrame,
@@ -80,11 +78,23 @@ def calculate_weights(
     輸出:
         weights: 每個準則的權重陣列，總和為 1
     """
-    data_array = matrix.to_numpy(dtype=float)
 
-    beta_matrix, cv_array, nit_array = _normalize(data_array, aspire_values, it_values)
+    beta_matrix, cv_array, nit_array = _normalize(matrix, aspire_values, it_values)
     gamma_matrix = _gamma(beta_matrix)
     vj_array = _delta_and_vj(gamma_matrix, nit_array, p)
     weights = _combine_weights(vj_array, cv_array, alpha)
 
+    return weights
+
+
+#供 modified ITARA II 使用
+def independent_weight(
+    matrix:np.ndarray,
+    it_values: np.ndarray,
+    aspire_values: np.ndarray,
+    p: float = 2) -> np.ndarray:
+    beta_matrix,_, nit_array = _normalize(matrix, aspire_values, it_values)
+    gamma_matrix= _gamma(beta_matrix)
+    vj_array= _delta_and_vj(gamma_matrix, nit_array, p)
+    weights=vj_array/vj_array.sum()
     return weights

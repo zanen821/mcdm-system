@@ -6,8 +6,19 @@
 多準則決策的比較系統，放入 Excel 可以直接算出績效，並支援不同權重法與績效評估法自由組合比較。
 
 ## 目前支援方法
-- **Weight**：AHP,DEMATEL,Entropy
-- **Performance**：Marcos
+- **Weight**：
+  -AHP
+  -BWM(2015,2016)
+  -DEMATEL
+  -Entropy
+  -CRITIC
+  -ITARA
+  -modified ITARA (I,II)
+  -SECA
+- **Performance**：
+  -Marcos
+  -promethee
+
 
 ## 使用指南
 

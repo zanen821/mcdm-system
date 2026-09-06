@@ -7,17 +7,17 @@
 
 ## 目前支援方法
 - **Weight**：
-  -AHP
-  -BWM(2015,2016)
-  -DEMATEL
-  -Entropy
-  -CRITIC
-  -ITARA
-  -modified ITARA (I,II)
-  -SECA
+  -[]AHP
+  -[]BWM(2015,2016)
+  -[]DEMATEL
+  -[]Entropy
+  -[]CRITIC
+  -[]ITARA
+  -[]modified ITARA (I,II)
+  -[]SECA
 - **Performance**：
-  -Marcos
-  -promethee
+  -[]Marcos
+  -[]promethee
 
 
 ## 使用指南
@@ -50,10 +50,6 @@
 - [ ] 新增 Gray DEMATEL 權重法
 - [ ] 新增 Z DEMATEL 權重法
 - [ ] 新增 ANP 權重法
-- [ ] 新增 CRITIC 權重法
-- [ ] 新增 ITARA 權重法
-- [ ] 新增 ITARA 權重法
-- [ ] 新增 SECA 權重法
 - [ ] 新增 FullEX 權重法
 - [ ] 新增 HISA 權重法
 - [ ] 新增 SAW 績效評估法

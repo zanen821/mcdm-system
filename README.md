@@ -14,7 +14,9 @@
   -[]CRITIC
   -[]ITARA
   -[]modified ITARA (I,II)
+  -[]FullEX
   -[]SECA
+
 - **Performance**：
   -[]Marcos
   -[]promethee
@@ -50,7 +52,6 @@
 - [ ] 新增 Gray DEMATEL 權重法
 - [ ] 新增 Z DEMATEL 權重法
 - [ ] 新增 ANP 權重法
-- [ ] 新增 FullEX 權重法
 - [ ] 新增 HISA 權重法
 - [ ] 新增 SAW 績效評估法
 - [ ] 新增 WASPAS 績效評估法

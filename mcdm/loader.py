@@ -146,3 +146,28 @@ def load_modified_itara_ii_data(filepath: str) -> tuple[np.ndarray,np.ndarray,np
     matrix = raw.drop(['IT', 'Aspire Level','Worst Level'])
 
     return matrix.to_numpy(dtype=float),it_values, aspire_values,worst_values
+
+def load_fullex_data(filepath: str) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """
+    FullEX 專用
+    Excel 格式：
+        - 工作表 "expert"：第一欄為專家名稱(index)，其餘欄位為專家背景資訊
+                            (例如年資、教育程度)。
+        - 工作表 "data"：第一欄為專家名稱(index，須與 expert 表一致)，
+                          其餘欄位為每個準則被選取的次數(整數)。
+
+    輸出:
+        expert_weight:專家權重
+        data_matrix:各準則的選取次數 
+    """
+    expert_df = pd.read_excel(filepath, sheet_name='expert', header=0, index_col=0)
+    data_df = pd.read_excel(filepath, sheet_name='data', header=0, index_col=0)
+
+    if not expert_df.index.equals(data_df.index):
+        raise ValueError("expert 表與 data 表的專家順序或名稱不一致")
+
+    ye_ed = expert_df.to_numpy(dtype=float)
+    expert_weight=ye_ed.sum(axis=1)/ye_ed.sum()
+    data_matrix = data_df.to_numpy(dtype=int)
+
+    return expert_weight,data_matrix

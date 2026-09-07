@@ -4,6 +4,17 @@ from mcdm.loader import load_decision_matrix
 #from mcdm.weighting.entropy import calculate_weights
 from mcdm.ranking.marcos import rank
 
+#FullEX
+def fullex():
+    from mcdm.loader import load_fullex_data
+    from mcdm.weighting.fullex import calculate_weight
+    expert_weight,data_matrix=load_fullex_data('data/fullex.xlsx')
+    weights=calculate_weight(data_matrix,expert_weight)
+    print(weights)
+fullex()
+
+
+
 '''
 #modified ITARA ii
 def modified_itara_ii():
@@ -15,8 +26,6 @@ def modified_itara_ii():
 
 modified_itara_ii()
 '''
-
-
 
 '''
 #modified ITARA i

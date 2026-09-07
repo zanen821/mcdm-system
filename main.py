@@ -4,6 +4,16 @@ from mcdm.loader import load_decision_matrix
 #from mcdm.weighting.entropy import calculate_weights
 from mcdm.ranking.marcos import rank
 
+#不可用
+#HISA
+def hisa():
+    from mcdm.loader import load_pairwise_matrix
+    from mcdm.weighting.hisa import calculate_weights
+    sheet = load_pairwise_matrix('data/HISA.xlsx')
+    weights = calculate_weights(sheet)
+hisa()
+
+'''
 #FullEX
 def fullex():
     from mcdm.loader import load_fullex_data
@@ -12,8 +22,7 @@ def fullex():
     weights=calculate_weight(data_matrix,expert_weight)
     print(weights)
 fullex()
-
-
+'''
 
 '''
 #modified ITARA ii

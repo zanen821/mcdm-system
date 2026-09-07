@@ -126,9 +126,9 @@ def load_modified_itara_ii_data(filepath: str) -> tuple[np.ndarray,np.ndarray,np
     """
     Modified ITARA II專用
     Excel 格式需求：
-        -criteria types：
         -IT：無差異閾值(Indifference Threshold)
-        -Aspire Level：各準則的渴望水準
+        -Aspire Level：渴望水準
+        -Worst Level：最差水準
         -Data matrix
 
     輸出:

@@ -48,7 +48,5 @@ def calculate_weights(
     matrix=_normalize(matrix,aspire_values,worst_values)
     cv_matrix=np.corrcoef(matrix,rowvar=False)
     dependent_weight=np.sum(1-cv_matrix,axis=1)/np.sum(np.sum(1-cv_matrix,axis=1))
-    print(independent_weight)
-    print(dependent_weight)
     weights=_best_weights(independent_weight,dependent_weight)
     return weights

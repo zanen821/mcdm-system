@@ -4,7 +4,7 @@ from mcdm.loader import load_decision_matrix
 #from mcdm.weighting.entropy import calculate_weights
 from mcdm.ranking.marcos import rank
 
-#待修改
+'''
 #modified ITARA ii
 def modified_itara_ii():
     from mcdm.loader import load_modified_itara_ii_data
@@ -14,6 +14,8 @@ def modified_itara_ii():
     print("modified ITARA ii 權重：", weights)
 
 modified_itara_ii()
+'''
+
 
 
 '''

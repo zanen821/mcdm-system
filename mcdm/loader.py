@@ -30,7 +30,7 @@ def load_decision_matrix(filepath: str) -> tuple[pd.DataFrame, list[str]]:
     type_row = raw.loc['type']
     criteria_types = _transform_type_row(type_row)
     matrix = raw.drop('type')
-    return matrix, criteria_types
+    return matrix.to_numpy(dtype=float), criteria_types
 
 
 def load_pairwise_matrix(filepath: str) -> dict[str, pd.DataFrame]:

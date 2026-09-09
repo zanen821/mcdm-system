@@ -4,6 +4,16 @@ from mcdm.loader import load_decision_matrix
 #from mcdm.weighting.entropy import calculate_weights
 from mcdm.ranking.marcos import rank
 
+#MEREC
+def merec():
+    from mcdm.loader import load_decision_matrix
+    from mcdm.weighting.merec import calculate_weights
+    matrix,criteria_types = load_decision_matrix('data/merec.xlsx')
+    weights = calculate_weights(matrix, criteria_types)
+    print(weights)
+
+merec()
+'''
 #不可用
 #HISA
 def hisa():
@@ -12,7 +22,7 @@ def hisa():
     sheet = load_pairwise_matrix('data/HISA.xlsx')
     weights = calculate_weights(sheet)
 hisa()
-
+'''
 '''
 #FullEX
 def fullex():
